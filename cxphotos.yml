@@ -1,0 +1,12 @@
+---
+name: "Simple Photos, an example application"
+photos: __path_to(var/photos)__
+
+Model::Schema:
+    connect_info:
+        - 'dbi:SQLite'
+        - '' 
+        - ''
+        -
+            quote_char: '`'
+            name_sep: .

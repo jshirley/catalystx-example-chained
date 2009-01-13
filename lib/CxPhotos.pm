@@ -1,4 +1,4 @@
-package Chained;
+package CxPhotos;
 
 use strict;
 use warnings;
@@ -29,16 +29,23 @@ our $VERSION = '0.01';
 __PACKAGE__->config( name => 'Chained' );
 
 # Start the application
-__PACKAGE__->setup(qw/-Debug ConfigLoader Static::Simple/);
+__PACKAGE__->setup(qw/
+    ConfigLoader Static::Simple
+/);
 
 
 =head1 NAME
 
-Chained - Catalyst based application
+CxPhotos - Catalyst example application
 
 =head1 SYNOPSIS
 
-    script/chained_server.pl
+This application is for demonstrating the ideas of controller base classes and
+<Catalyst::DispatchType::Chained>.
+
+To start this application, please run:
+
+    script/cxphotos_server.pl -d
 
 =head1 DESCRIPTION
 
@@ -50,7 +57,7 @@ L<Chained::Controller::Root>, L<Catalyst>
 
 =head1 AUTHOR
 
-J. Shirley
+J. Shirley C<< <code@coldhardcode.com> >>
 
 =head1 LICENSE
 

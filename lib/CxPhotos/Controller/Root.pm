@@ -1,4 +1,4 @@
-package Chained::Controller::Root;
+package CxPhotos::Controller::Root;
 
 use strict;
 use warnings;
@@ -38,7 +38,7 @@ sub base : Chained('/') PathPart('') CaptureArgs(0) {
 }
 
 sub person : Chained('base') PathPart('') CaptureArgs(0) { }
-sub group  : Chained('base') PathPart('') CaptureArgs(0) { }
+sub tag    : Chained('base') PathPart('') CaptureArgs(0) { }
 
 sub default :Path {
     my ( $self, $c ) = @_;

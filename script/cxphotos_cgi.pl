@@ -6,9 +6,9 @@ use strict;
 use warnings;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
-use Chained;
+use CxPhotos;
 
-Chained->run;
+CxPhotos->run;
 
 1;
 

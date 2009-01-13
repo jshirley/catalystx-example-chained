@@ -1,12 +1,13 @@
-package Chained::Controller::Group;
+package CxPhotos::Controller::Tag;
 
 use strict;
 use warnings;
+
 use parent 'Catalyst::Controller';
 
 =head1 NAME
 
-Chained::Controller::Group - Catalyst Controller
+CxPhotos::Controller::Group - Catalyst Controller
 
 =head1 DESCRIPTION
 
@@ -21,15 +22,13 @@ Catalyst Controller.
 
 =cut
 
-sub setup : Chained('.') PathPart('group') CaptureArgs(1) {
-    my ( $self, $c ) = @_;
+sub setup : Chained('.') PathPart('tag') CaptureArgs(1) {
+    my ( $self, $c, $name ) = @_;
 }
 
-sub widget : Chained('setup') PathPart('') CaptureArgs(0) { }
+sub photos : Chained('setup') PathPart('') CaptureArgs(0) { }
 
 sub object : Chained('setup') PathPart('') Args(0) { }
-
-
 
 =head1 AUTHOR
 

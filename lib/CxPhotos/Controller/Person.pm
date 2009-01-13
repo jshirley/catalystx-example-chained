@@ -1,12 +1,13 @@
-package Chained::Controller::Person;
+package CxPhotos::Controller::Person;
 
 use strict;
 use warnings;
+
 use parent 'Catalyst::Controller';
 
 =head1 NAME
 
-Chained::Controller::Person - Catalyst Controller
+CxPhotos::Controller::Person - Catalyst Controller
 
 =head1 DESCRIPTION
 
@@ -28,7 +29,7 @@ sub setup : Chained('.') PathPart('person') CaptureArgs(1) {
     my ( $self, $c ) = @_;
 }
 
-sub widget : Chained('setup') PathPart('') CaptureArgs(0) { }
+sub photos : Chained('setup') PathPart('') CaptureArgs(0) { }
 
 sub object : Chained('setup') PathPart('') Args(0) { }
 

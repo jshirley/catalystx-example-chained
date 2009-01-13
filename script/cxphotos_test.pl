@@ -6,7 +6,7 @@ use Getopt::Long;
 use Pod::Usage;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
-use Catalyst::Test 'Chained';
+use Catalyst::Test 'CxPhotos';
 
 my $help = 0;
 
