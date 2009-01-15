@@ -1,0 +1,12 @@
+[%~
+# Process the appropriate layout
+IF page.layout == 'partial';
+    content;
+ELSE;
+    IF page.layout == 'none';
+        content WRAPPER site/html.tt;
+    ELSE;
+        content WRAPPER site/html.tt + "site/layout/${page.layout}.tt";
+    END;
+END;
+~%]

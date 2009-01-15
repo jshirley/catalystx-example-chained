@@ -1,0 +1,106 @@
+/* Reset styles */
+body {
+    color: #000;
+    background: #c0c0ff;
+}
+body,
+h1, h2, h3, h4, h5, h6,
+div, p, blockquote, code, pre, th, td,
+ol, ul, li, dl, dt, dd,
+form, fieldset, legend, input, textarea {
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset, img {
+    border:0;
+}
+strong, em, code, th, td {
+    font-style: normal;
+    font-weight: normal;
+}
+li {
+    list-style: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+/* Layout style */
+.content {
+    background: #fff;
+    width: 100%;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2em 4em; 
+}
+.float_container {
+    overflow: hidden;
+}
+.main_column {
+    width: 425px;
+}
+.support_column {
+    width: 300px;
+}
+.column {
+    width: 365px;
+}
+
+/* Miscellaneous useful styles */
+.hide  { display: none !important }
+.left  { display: inline; float: left }
+.right { display: inline; float: right }
+.clear { clear: both }
+
+/* cursor styles */
+.clickable   { cursor: pointer; cursor: hand; }
+.unclickable { cursor: default !important; }
+.movable     { cursor: move; }
+
+body {
+    font-family: arial, sans-serif;
+}
+
+h1 {
+    font-size: 161.6%;
+    font-weight: bold;
+    margin: .5em 0 1em 0;
+}
+h2 {
+    font-size: 123.1%;
+    font-weight: bold;
+    padding: .5em 0 .5em 0;
+}
+h3 {
+    font-size: 123.1%;
+    font-weight: bold;
+    margin: .25em 0 .5em 0;
+}
+h4 {
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.header, .footer {
+    margin: 0; padding: 1ex 1em;
+}
+.footer { text-align: center; }
+
+.tags { overflow: hidden; }
+.tags ul { float: left; }
+
+
+ul.photos { overflow: hidden; }
+ul.photos li {
+    float: left;
+    margin: 1em;
+    background: #ccc;
+}
+
+ul.photos .photo { padding: 5px; }

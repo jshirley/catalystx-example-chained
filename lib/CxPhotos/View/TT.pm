@@ -1,16 +1,37 @@
-package Chained::View::TT;
+package CxPhotos::View::TT;
 
 use strict;
-use warnings;
-use parent 'Catalyst::View';
+use base 'Catalyst::View::TT';
+
+__PACKAGE__->config({
+    PRE_PROCESS        => 'site/shared/base.tt',
+    WRAPPER            => 'site/wrapper.tt',
+    TEMPLATE_EXTENSION => '.tt',
+    TIMER              => 0,
+    static_root        => '/static',
+    static_build       => 0
+});
+
+sub template_vars {
+    my $self = shift;
+    return (
+        $self->NEXT::template_vars(@_),
+        static_root  => $self->{static_root},
+        static_build => $self->{static_build}
+    );
+}
 
 =head1 NAME
 
-Chained::View::TT - Catalyst View
+CxPhotos::View::TT - Catalyst TT::Bootstrap View
+
+=head1 SYNOPSIS
+
+See L<CxPhotos>
 
 =head1 DESCRIPTION
 
-Catalyst View.
+Catalyst TT::Bootstrap View.
 
 =head1 AUTHOR
 

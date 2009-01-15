@@ -1,0 +1,12 @@
+<div class="header">
+    <h1>A Simple Photo Browser</h1>
+    <p>
+    This application is a demonstration of making use of base classes in your
+    Catalyst application.  It was built for Jay Shirley's talk at the 2009
+    Orlando Perl Workshop, titled "Catalyst &amp; Chained: Bondage for better
+    applications."
+    </p>
+    <p>
+        The source of this application is freely available at <a href="#">TODO</a>
+    </p>
+</div>

@@ -23,12 +23,20 @@ Catalyst Controller.
 =cut
 
 sub setup : Chained('.') PathPart('tag') CaptureArgs(1) {
-    my ( $self, $c, $name ) = @_;
+    my ( $self, $c, $id ) = @_;
+
+    $c->stash->{tag} = $c->model('Schema::Tag')->find( $id );
+
+    unless ( $c->stash->{tag} ) {
+        $c->detach('not_found');
+    }
+    my $p = $c->stash->{tag}->photos->first;
+    $c->log->debug( "WTF: $p => " . $p->persons->count );
 }
 
 sub photos : Chained('setup') PathPart('') CaptureArgs(0) { }
 
-sub object : Chained('setup') PathPart('') Args(0) { }
+sub display : Chained('setup') PathPart('') Args(0) { }
 
 =head1 AUTHOR
 

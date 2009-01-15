@@ -32,7 +32,9 @@ sub deploy {
             unless ( $rs ) {
                 carp "Unknown result set in import: $data"
             }
-            my $csv = Text::xSV->new;
+            my $csv = Text::xSV->new(
+                error_handler => sub { die @_; }
+            );
             $csv->open_file($data_import->{$data});
             $csv->read_header;
             foreach my $field ( $csv->get_fields ) {

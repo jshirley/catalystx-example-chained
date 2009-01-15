@@ -26,12 +26,18 @@ controller namespace)
 =cut
 
 sub setup : Chained('.') PathPart('person') CaptureArgs(1) {
-    my ( $self, $c ) = @_;
+    my ( $self, $c, $id ) = @_;
+
+    $c->stash->{person} = $c->model('Schema::Person')->find( $id );
+
+    unless ( $c->stash->{person} ) {
+        $c->detach('not_found');
+    }
 }
 
 sub photos : Chained('setup') PathPart('') CaptureArgs(0) { }
 
-sub object : Chained('setup') PathPart('') Args(0) { }
+sub display : Chained('setup') PathPart('') Args(0) { }
 
 =head1 AUTHOR
 

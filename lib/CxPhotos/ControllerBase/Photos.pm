@@ -16,7 +16,7 @@ sub setup : Chained('.') PathPart('photos') CaptureArgs(0) {
     my $stash_key = $self->stash_key;
     my $source_rs = $self->source_rs;
 
-    $c->stash->{$stash_key} = $c->stash-{$source_rs}->$method
+    $c->stash->{$stash_key} = $c->stash->{$source_rs}->$method
 }
 
 sub display : Chained('setup') PathPart('') Args(0) { 
