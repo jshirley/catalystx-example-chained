@@ -17,8 +17,6 @@ END;
   <title>[% page.title %]</title>
   <meta http-equiv="Content-Language" content="[% page.language %]">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="[% static( 'css/screen.css', 1 ) %]" media="screen"/>
-  <link rel="stylesheet" href="[% static( 'css/nav_' _ page.nav _ '.css' ) %]" media="screen"/>
 [%
 # Add all javascript refs in page.head.scripts (see page.body.scripts)
 page.head.scripts = page.head.scripts.unique;

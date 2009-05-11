@@ -40,6 +40,13 @@ to execute via the URL C</person>
 
 sub root : Chained('setup') PathPart('') Args(0) { }
 
+=head2 setup_person(1)
+
+This sets up the person, via the URL C</person/$id> and, if unable to find them
+by inspecting the stashed result set, detaches to the 404 "Not Found" action
+
+=cut
+
 sub setup_person : Chained('setup') PathPart('') CaptureArgs(1) {
     my ( $self, $c, $id ) = @_;
 
@@ -50,9 +57,41 @@ sub setup_person : Chained('setup') PathPart('') CaptureArgs(1) {
     }
 }
 
-sub photos : Chained('setup_person') PathPart('') CaptureArgs(0) { }
+=head2 display
+
+Displays the currently discovered person in the URL.  Since this method has
+the attribute C<PathPart('')> there is no end part to the path, and it is 
+accessible simply at C</person/$id>
+
+=cut
 
 sub display : Chained('setup_person') PathPart('') Args(0) { }
+
+=head2 photos
+
+This is an intermediary chain that connects to the
+L<CxPhotos::Controller::Person::Photos> controller.
+
+=cut
+
+sub photos : Chained('setup_person') PathPart('') CaptureArgs(0) { }
+
+=head2 not_found
+
+This private not_found action sets the proper status code (404) and the template
+in the stash.  It instructs L<Catalyst::Action::RenderView> to use
+C<person/not_found.tt> for a custom 404 page.
+
+Of note, since we have the result set populated in the stash up the chain, the
+404 page can query the results to give a list of people.
+
+=cut
+
+sub not_found : Private {
+    my ( $self, $c ) = @_;
+    $c->res->status(404);
+    $c->stash->{template} = 'person/not_found.tt';
+}
 
 =head1 AUTHOR
 
