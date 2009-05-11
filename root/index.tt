@@ -1,0 +1,2 @@
+<h1>There isn't much here yet</h1>
+<p>So, why not look at some <a href="[% c.uri_for( c.controller('Person').action_for('root') ) %]">people</a> instead?</p>

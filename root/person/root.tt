@@ -1,0 +1,6 @@
+<h1>Get your people here</h1>
+<ul>
+[% WHILE ( person = result.next ) %]
+    <li><a href="[% c.uri_for( c.controller('Person').action_for('display'), [ person.id ] ) %]">[% person.name %]</a></li>
+[% END %]
+</ul>
