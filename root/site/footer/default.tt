@@ -1,3 +1,10 @@
 <div class="footer">
+    <p>
+    This application is a demonstration of good development techniques in a
+    Catalyst application.
+    </p>
+    <p>
+        The source of this application is freely available via git, at <code>    git://github.com/jshirley/catalystx-example-chained.git</code>, or viewable <a href="http://github.com/jshirley/catalystx-example-chained/tree/master">at Github</a>.
+    </p>
    <p>Please send any questions to <a href="mailto:code@coldhardcode.com">code@coldhardcode.com</a>.</p>
 </div>

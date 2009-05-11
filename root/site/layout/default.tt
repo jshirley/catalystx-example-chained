@@ -1,4 +1,6 @@
+<div class="inner">
 [%~ 
 # Nothing fancy here.  Just dump the content
 content
 ~%]
+</div>

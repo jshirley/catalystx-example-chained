@@ -1,6 +1,8 @@
 package CxPhotos::Schema::Person;
 
-use parent 'DBIx::Class';
+use Moose;
+
+extends 'DBIx::Class';
 
 __PACKAGE__->load_components('Core');
 
@@ -29,5 +31,10 @@ __PACKAGE__->has_many(
 );
 
 __PACKAGE__->many_to_many( 'photos' => 'photo_links' => 'photo' );
+
+sub stupid_test {
+    my ( $self, $photo ) = @_;
+    return $self->result_source->schema->storage_path;
+}
 
 1;

@@ -1,13 +1,20 @@
 package CxPhotos::Schema;
-use strict;
-use warnings;
 
-use base 'DBIx::Class::Schema';
+use parent 'DBIx::Class::Schema';
+
+use Moose;
+use MooseX::Types::Path::Class;
 
 use Carp;
 use Text::xSV;
 
-__PACKAGE__->load_classes;
+__PACKAGE__->load_namespaces( result_namespace => '+CxPhotos::Schema' );
+
+has 'storage_path' => (
+    is       => 'rw',
+    isa      => 'Path::Class::Dir',
+    coerce   => 1,
+);
 
 sub deploy {
     my ( $self, $properties ) = @_;

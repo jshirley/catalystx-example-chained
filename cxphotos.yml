@@ -1,7 +1,9 @@
 ---
 name: "Simple Photos, an example application"
 photo_prefix: '/static/images'
+
 Model::Schema:
+    storage_path: __path_to(static/images)__
     connect_info:
         - dbi:SQLite:__path_to(var/database.db)__
         - ""

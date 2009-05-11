@@ -1,9 +1,10 @@
 package CxPhotos::Schema::Photo;
 
-use parent 'DBIx::Class';
+use Moose;
+
+extends 'DBIx::Class';
 
 __PACKAGE__->load_components('Core');
-
 __PACKAGE__->table('photo');
 
 __PACKAGE__->add_columns(
@@ -46,6 +47,5 @@ __PACKAGE__->has_many(
 );
 
 __PACKAGE__->many_to_many( 'tags' => 'tag_links' => 'tag' );
-
 
 1;

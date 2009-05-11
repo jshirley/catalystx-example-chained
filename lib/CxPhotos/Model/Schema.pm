@@ -1,23 +1,52 @@
 package CxPhotos::Model::Schema;
 
-use strict;
-use base 'Catalyst::Model::DBIC::Schema';
+use Moose;
+
+extends 'Catalyst::Model::DBIC::Schema';
 
 __PACKAGE__->config(
     schema_class => 'CxPhotos::Schema',
-    
+);
+
+has 'storage_path' => (
+    is => 'rw',
+    isa => 'Str'
 );
 
 =head1 NAME
 
 CxPhotos::Model::Schema - Catalyst DBIC Schema Model
+
 =head1 SYNOPSIS
 
-See L<CxPhotos>
+This is the thin adapter to L<CxPhotos::Schema>
 
-=head1 DESCRIPTION
+=head1 ATTRIBUTES
 
-L<Catalyst::Model::DBIC::Schema> Model using schema L<CxPhotos::Schema>
+=over
+
+=item storage_path
+
+The path, on disk, to store any files
+
+=back
+
+=head1 METHODS
+
+=head2 new
+
+This overridden new sets the custom accessors from the L<Catalyst> configuration
+
+This allows us to use the schema from outside Catalyst easily
+
+=cut
+
+sub new {
+    my $self = shift->next::method(@_);
+    $self->schema->storage_path( $self->storage_path );
+
+    return $self;
+};
 
 =head1 AUTHOR
 

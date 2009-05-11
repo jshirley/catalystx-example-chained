@@ -1,3 +1,2 @@
-<h1>Sorry, this app is disappointing.</h1>
-<p>This is [% person.name | html %]'s page, but it doesn't do anything.</p>
+<h1>This is [% person.name | html %]'s page</h1>
 <p>How about you go <a href="[% c.uri_for( c.controller('Person::Photos').action_for('display'), [ person.id ] ) %]">look at their photos</a> instead.</p>

@@ -2,6 +2,7 @@ package CxPhotos::Controller::Root;
 
 use strict;
 use warnings;
+
 use parent 'Catalyst::Controller';
 
 #
@@ -12,44 +13,60 @@ __PACKAGE__->config->{namespace} = '';
 
 =head1 NAME
 
-Chained::Controller::Root - Root Controller for Chained
+CxPhotos::Controller::Root - It all starts here
 
 =head1 DESCRIPTION
 
-[enter your description here]
+This is the base controller that starts all actions.  Below is a listing of all
+methods and what they do
 
 =head1 METHODS
 
 =cut
 
-=head2 index
+=head2 setup
+
+This is the C<setup> method that initializes the request.  Any matching action
+will go through this, so it is an application-wide automatically executed 
+action.  For more information, see L<Catalyst::DispatchType::Chained>
 
 =cut
 
-sub index :Path :Args(0) {
+sub setup : Chained('/') PathPart('') CaptureArgs(0) {
     my ( $self, $c ) = @_;
+    # Common things here are to check for ACL and setup global contexts
+}
 
-    # Hello World
+=head2 default 
+
+This is the "not found" action, any request that can't be handled falls to this
+
+This action outputs the Catalyst Welcome Message, generally you want to forward
+this to your own C<error/not_found.tt> template.
+
+=cut
+
+sub default : Path {
+    my ( $self, $c ) = @_;
+    $c->res->status(404);
     $c->response->body( $c->welcome_message );
 }
 
-sub base : Chained('/') PathPart('') CaptureArgs(0) {
+=head2 index
 
-}
+This is the "/" action, dispatched to based on the C<Args(0)>.
 
-sub person : Chained('base') PathPart('') CaptureArgs(0) { }
-sub tag    : Chained('base') PathPart('') CaptureArgs(0) { }
+=cut
 
-sub default :Path {
-    my ( $self, $c ) = @_;
-    $c->response->body( 'Page not found' );
-    $c->response->status(404);
-    
-}
+sub index  : Chained('setup') PathPart('') Args(0) { }
+
+sub person : Chained('setup') PathPart('') CaptureArgs(0) { }
+sub tag    : Chained('setup') PathPart('') CaptureArgs(0) { }
 
 =head2 end
 
-Attempt to render a view, if needed.
+Attempt to render a view, if needed.  To modify the default view, set the
+C<default_view> key in the configuration.
 
 =cut 
 
